@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spending_tracker/model/spending.dart';
+import 'package:spending_tracker/view/new_spending.dart';
 import 'package:spending_tracker/widget/spending_list.dart';
 
 class SpendingsScreen extends StatefulWidget {
@@ -27,13 +28,21 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
     ),
   ];
 
+  void _openExpenseAddingScreen() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => const NewSpending(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: const Text('Spending Tracker'),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: _openExpenseAddingScreen,
               icon: const Icon(Icons.add),
             ),
           ],
