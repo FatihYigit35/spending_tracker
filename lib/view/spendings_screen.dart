@@ -28,15 +28,56 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
     ),
   ];
 
+  void _addSpending(Spending spending) {
+    setState(() {
+      _registeredSpendings.add(spending);
+    });
+  }
+
+  void _deleteSpending(Spending spending) {
+    final index = _registeredSpendings.indexOf(spending);
+
+    setState(() {
+      _registeredSpendings.remove(spending);
+    });
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Spending deleted.'),
+        action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                _registeredSpendings.insert(index, spending);
+              });
+            }),
+      ),
+    );
+  }
+
   void _openExpenseAddingScreen() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => const NewSpending(),
+      builder: (context) => NewSpending(
+        onAddSpending: _addSpending,
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No spending, add new spending.'),
+    );
+
+    if (_registeredSpendings.isNotEmpty) {
+      mainContent = SpendingList(
+        spendings: _registeredSpendings,
+        onDeleteSpending: _deleteSpending,
+      );
+    }
     return Scaffold(
         appBar: AppBar(
           title: const Text('Spending Tracker'),
@@ -52,7 +93,7 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
           children: [
             const Text("Spendings chart"),
             Expanded(
-              child: SpendingList(spendings: _registeredSpendings),
+              child: mainContent,
             ),
           ],
         ));
