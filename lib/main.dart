@@ -12,7 +12,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.green.shade50,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.green.shade200,
+        ),
       ),
       home: const SpendingsScreen(),
     );
