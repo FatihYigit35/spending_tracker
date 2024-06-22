@@ -87,7 +87,6 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
               icon: const Icon(Icons.add),
             ),
           ],
-          backgroundColor: Colors.green.shade200,
         ),
         body: Column(
           children: [
