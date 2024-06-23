@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spending_tracker/model/category_icons.dart';
 import 'package:spending_tracker/model/spending.dart';
 
 class SpendingCard extends StatelessWidget {

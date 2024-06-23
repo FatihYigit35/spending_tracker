@@ -1,3 +1,4 @@
+import 'package:spending_tracker/model/category.dart';
 import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
@@ -22,17 +23,3 @@ class Spending {
     return '${date.day}/${date.month}/${date.year}';
   }
 }
-
-enum Category {
-  food,
-  shopping,
-  entertainment,
-  transport,
-}
-
-const Map<Category, String> categoryIcons = {
-  Category.food: '🍔',
-  Category.shopping: '🛒',
-  Category.entertainment: '🎉',
-  Category.transport: '🚌'
-};

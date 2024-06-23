@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spending_tracker/model/category.dart';
 import 'package:spending_tracker/model/spending.dart';
 
 class NewSpending extends StatefulWidget {
