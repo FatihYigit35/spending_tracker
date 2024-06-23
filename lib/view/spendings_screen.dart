@@ -13,18 +13,18 @@ class SpendingsScreen extends StatefulWidget {
 class _SpendingsScreenState extends State<SpendingsScreen> {
   final List<Spending> _registeredSpendings = [
     Spending(
-      title: 'Kitap',
+      title: 'New book',
       amount: 20.8,
       date: DateTime.now(),
       category: Category.shopping,
-      description: 'Doctor Who - 11 Doktor 11 Öykü kitabu alındı',
+      description: 'Doctor Who - 11 Doctors 11 Stories book purchased',
     ),
     Spending(
-      title: 'Sinema',
+      title: 'New movie in cinema',
       amount: 30.5,
       date: DateTime.now(),
       category: Category.entertainment,
-      description: 'Matrix filmine gidildi',
+      description: 'I went to the movie Inside Out 2 with my son.',
     ),
   ];
 
