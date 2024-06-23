@@ -15,9 +15,11 @@ class SpendingCard extends StatelessWidget {
           vertical: 10,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               spending.title,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(
               height: 4,
