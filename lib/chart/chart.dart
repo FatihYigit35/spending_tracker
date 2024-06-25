@@ -6,16 +6,16 @@ import 'package:spending_tracker/model/spending.dart';
 import 'package:spending_tracker/model/spending_bucket.dart';
 
 class Chart extends StatelessWidget {
-  const Chart({super.key, required this.expenses});
+  const Chart({super.key, required this.spendings});
 
-  final List<Spending> expenses;
+  final List<Spending> spendings;
 
   List<SpendingBucket> get buckets {
     return [
-      SpendingBucket.forCategory(expenses, Category.food),
-      SpendingBucket.forCategory(expenses, Category.entertainment),
-      SpendingBucket.forCategory(expenses, Category.shopping),
-      SpendingBucket.forCategory(expenses, Category.transport),
+      SpendingBucket.forCategory(spendings, Category.food),
+      SpendingBucket.forCategory(spendings, Category.entertainment),
+      SpendingBucket.forCategory(spendings, Category.shopping),
+      SpendingBucket.forCategory(spendings, Category.transport),
     ];
   }
 
@@ -75,8 +75,17 @@ class Chart extends StatelessWidget {
                 .map(
                   (bucket) => Expanded(
                     child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Text(categoryIcons[bucket.category].toString())),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Icon(
+                        categoryIcons[bucket.category],
+                        color: isDarkMode
+                            ? Theme.of(context).colorScheme.secondary
+                            : Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.7),
+                      ),
+                    ),
                   ),
                 )
                 .toList(),

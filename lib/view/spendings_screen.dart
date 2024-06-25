@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:spending_tracker/model/category.dart';
-import 'package:spending_tracker/model/spending.dart';
-import 'package:spending_tracker/view/new_spending.dart';
-import 'package:spending_tracker/widget/spending_list.dart';
+
+import '../model/category.dart';
+import '../model/spending.dart';
+import '../view/new_spending.dart';
+import '../widget/spending_list.dart';
+import '../chart/chart.dart';
 
 class SpendingsScreen extends StatefulWidget {
   const SpendingsScreen({super.key});
@@ -91,7 +93,7 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
         ),
         body: Column(
           children: [
-            const Text("Spendings chart"),
+            Chart(spendings: _registeredSpendings),
             Expanded(
               child: mainContent,
             ),

@@ -35,7 +35,9 @@ class SpendingCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(categoryIcons[spending.category].toString()),
+                    Icon(
+                      categoryIcons[spending.category],
+                    ),
                     const SizedBox(
                       width: 8,
                     ),
