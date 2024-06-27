@@ -71,6 +71,7 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = const Center(
       child: Text('No spending, add new spending.'),
     );
@@ -82,22 +83,36 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
       );
     }
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Spending Tracker'),
-          actions: [
-            IconButton(
-              onPressed: _openExpenseAddingScreen,
-              icon: const Icon(Icons.add),
+      appBar: AppBar(
+        title: const Text('Spending Tracker'),
+        actions: [
+          IconButton(
+            onPressed: _openExpenseAddingScreen,
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(spendings: _registeredSpendings),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(
+                  child: Chart(
+                    spendings: _registeredSpendings,
+                  ),
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
             ),
-          ],
-        ),
-        body: Column(
-          children: [
-            Chart(spendings: _registeredSpendings),
-            Expanded(
-              child: mainContent,
-            ),
-          ],
-        ));
+    );
   }
 }

@@ -15,13 +15,14 @@ const kCardMargin = EdgeInsets.symmetric(
 );
 
 void main() {
-  //prevents the application from running in landscape mode
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
-  ).then((_) {
-    runApp(const MainApp());
-  });
+  // //prevents the application from running in landscape mode
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations(
+  //   [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  // ).then((_) {
+  //   runApp(const MainApp());
+  // });
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
