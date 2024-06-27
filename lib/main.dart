@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:spending_tracker/view/spendings_screen.dart';
 
 final kColorSheme = ColorScheme.fromSeed(
@@ -14,7 +15,13 @@ const kCardMargin = EdgeInsets.symmetric(
 );
 
 void main() {
-  runApp(const MainApp());
+  //prevents the application from running in landscape mode
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  ).then((_) {
+    runApp(const MainApp());
+  });
 }
 
 class MainApp extends StatelessWidget {
