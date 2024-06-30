@@ -62,6 +62,8 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
 
   void _openExpenseAddingScreen() {
     showModalBottomSheet(
+      useSafeArea: true,
+      isScrollControlled: true, //Allows it to cover the entire screen.
       context: context,
       builder: (context) => NewSpending(
         onAddSpending: _addSpending,
